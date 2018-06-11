@@ -35,3 +35,4 @@ docker-compose.yml
 .ruby-gemset
 /config/database.yml
 /config/secrets.yml
+*.swp
