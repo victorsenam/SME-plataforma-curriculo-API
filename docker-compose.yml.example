@@ -76,6 +76,21 @@ services:
       - db_development
     command: rails server -p 3000 -b '0.0.0.0'
 
+  jenkins_app:
+    image: jenkins_service
+    container_name: jenkins
+    build:
+      context: .
+      dockerfile: ./docker/jenkins/Dockerfile
+    volumes:
+      - .<define/your/jenkins/home>
+      - .<define/your/jenkins/log>
+    environment:
+      JENKINS_HOST_HOME: <define/your/jenkins/home>
+    ports:
+      - 5000:5000
+    tty: true
+
 volumes:
   assets:
     external: false
