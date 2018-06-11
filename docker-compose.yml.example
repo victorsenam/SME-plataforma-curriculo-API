@@ -87,6 +87,7 @@ services:
       - .<define/your/jenkins/log>
     environment:
       JENKINS_HOST_HOME: <define/your/jenkins/home>
+
     ports:
       - 5000:5000
     tty: true
