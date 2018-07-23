@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_151430) do
+ActiveRecord::Schema.define(version: 2018_07_23_152657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -276,7 +276,6 @@ ActiveRecord::Schema.define(version: 2018_07_23_151430) do
   end
 
   create_table "learning_objectives", force: :cascade do |t|
-    t.integer "year"
     t.string "code"
     t.string "description"
     t.bigint "curricular_component_id"
