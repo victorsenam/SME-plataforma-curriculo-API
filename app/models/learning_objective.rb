@@ -1,9 +1,9 @@
 class LearningObjective < ApplicationRecord
-  include YearsEnum
   belongs_to :curricular_component
   has_and_belongs_to_many :sustainable_development_goals
   has_and_belongs_to_many :activity_sequences
   has_and_belongs_to_many :activities
+  has_and_belongs_to_many :years, join_table: :learning_objectives_years
 
   validates :year, presence: true
   validates :description, presence: true

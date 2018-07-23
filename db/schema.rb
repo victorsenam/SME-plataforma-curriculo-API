@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_204028) do
+ActiveRecord::Schema.define(version: 2018_07_23_151430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -292,6 +292,11 @@ ActiveRecord::Schema.define(version: 2018_07_18_204028) do
     t.index ["sustainable_development_goal_id", "learning_objective_id"], name: "index_sdg_lo_on_sdg_id_alo_id"
   end
 
+  create_table "learning_objectives_years", id: false, force: :cascade do |t|
+    t.bigint "learning_objective_id", null: false
+    t.bigint "year_id", null: false
+  end
+
   create_table "loader_lookuptables", primary_key: "lookup_name", id: :text, comment: "This is the table name to inherit from and suffix of resulting output table -- how the table will be named --  edges here would mean -- ma_edges , pa_edges etc. except in the case of national tables. national level tables have no prefix", force: :cascade do |t|
     t.integer "process_order", default: 1000, null: false
     t.text "table_name", comment: "suffix of the tables to load e.g.  edges would load all tables like *edges.dbf(shp)  -- so tl_2010_42129_edges.dbf .  "
@@ -428,6 +433,12 @@ ActiveRecord::Schema.define(version: 2018_07_18_204028) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 # Could not dump table "zcta5" because of following StandardError
